@@ -2,7 +2,7 @@ PY := python3
 PIP := $(PY) -m pip
 VENV := .venv
 
-.PHONY: venv install format lint test train-example
+.PHONY: venv install format lint test train-example kernel lab nbstrip-install nbstrip nb
 
 venv:
 	$(PY) -m venv $(VENV)
@@ -25,5 +25,20 @@ test:
 
 train-example:
 	. $(VENV)/bin/activate; dalong-catboost --config configs/example_binary.yaml --out models/catboost.cbm
+
+kernel:
+	. $(VENV)/bin/activate; python -m ipykernel install --user --name dalong-catboost --display-name "Python (dalong-catboost)"
+
+lab:
+	. $(VENV)/bin/activate; jupyter lab
+
+nb:
+	. $(VENV)/bin/activate; jupyter notebook
+
+nbstrip-install:
+	. $(VENV)/bin/activate; nbstripout --install --attributes .gitattributes
+
+nbstrip:
+	. $(VENV)/bin/activate; nbstripout notebooks/**/*.ipynb || true
 
 
