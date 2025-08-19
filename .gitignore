@@ -273,4 +273,4 @@ marimo/_lsp/
 __marimo__/
 
 catboost_info/
-testdata/
+tests/data/
