@@ -1,5 +1,5 @@
 data:
-  train_json: tests/data/instrument.json   # 也可用你自己的大文件
+  train_json: data/instrument.csv   # 也可用你自己的大文件
   target: label                          # 你的目标字段，需写入“不锈钢压力表”等真实类型
   # 建议显式列出特征，避免泄漏特征（id、时间戳、tag等）
   features:
